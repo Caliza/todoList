@@ -18,12 +18,6 @@ export default function App() {
     setNewItem("")
   }
 
-  function deleteTodo(id) {
-    setTodos(currentTodos => {
-      return currentTodos.filter(todo => todo.id !== id)
-    })
-  }
-
   function toggleTodo(id, completed) {
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
@@ -33,6 +27,12 @@ export default function App() {
 
         return todo
       })
+    })
+  }
+
+  function deleteTodo(id) {
+    setTodos(currentTodos => {
+      return currentTodos.filter(todo => todo.id !== id)
     })
   }
 
@@ -47,6 +47,7 @@ export default function App() {
   </form>
   <h1 className="header">Todo List</h1>
   <ul className="list">
+    {todos.length === 0 && "No Todos"}
     {todos.map(todo => {
       return (
       <li key={todo.id}>
