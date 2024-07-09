@@ -14,22 +14,21 @@ export default function App() {
   useEffect(() => {
     localStorage.setItem("ITEMS", JSON.stringify(todos))
   }, [todos])
-  
+
   function addTodo(title) {
     setTodos(currentTodos => {
       return [
         ...currentTodos,
-        { id: crypto.randomUUID(), title, completed: false},
+        { id: crypto.randomUUID(), title, completed: false },
       ]
     })
   }
-  
 
   function toggleTodo(id, completed) {
     setTodos(currentTodos => {
       return currentTodos.map(todo => {
         if (todo.id === id) {
-          return { ...todo, completed}
+          return { ...todo, completed }
         }
 
         return todo
@@ -44,10 +43,10 @@ export default function App() {
   }
 
   return (
-  <>
-  <NewTodoForm onSubmit={addTodo}/>
-  <h1 className="header">Todo List</h1>
-  <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
-  </>
+    <>
+      <NewTodoForm onSubmit={addTodo} />
+      <h1 className="header">Todo List</h1>
+      <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
+    </>
   )
 }
